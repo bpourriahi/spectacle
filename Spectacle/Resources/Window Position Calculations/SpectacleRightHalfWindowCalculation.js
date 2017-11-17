@@ -16,5 +16,17 @@ windowPositionCalculationRegistry.registerWindowPositionCalculationWithAction(fu
             return oneThirdsRect;
         }
     }
+
+    var oneThirdRect = SpectacleCalculationHelpers.copyRect(oneHalfRect);
+    oneThirdRect.width = Math.floor(visibleFrameOfDestinationScreen.width / 3.0);
+    oneThirdRect.x = visibleFrameOfDestinationScreen.x + visibleFrameOfDestinationScreen.width - oneThirdRect.width;
+
+    if (SpectacleCalculationHelpers.rectCenteredWithinRect(oneThirdRect, windowRect)) {
+        var oneFourthsRect = SpectacleCalculationHelpers.copyRect(oneHalfRect);
+        oneFourthsRect.width = Math.floor(visibleFrameOfDestinationScreen.width / 4.0);
+        oneFourthsRect.x = visibleFrameOfDestinationScreen.x + visibleFrameOfDestinationScreen.width - oneFourthsRect.width;
+        return oneFourthsRect;
+    }
+
     return oneHalfRect;
 }, "SpectacleWindowActionRightHalf");
